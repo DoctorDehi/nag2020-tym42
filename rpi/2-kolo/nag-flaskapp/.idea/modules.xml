@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ajax-example/.idea/ajax-example.iml" filepath="$PROJECT_DIR$/../ajax-example/.idea/ajax-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nag-flaskapp.iml" filepath="$PROJECT_DIR$/.idea/nag-flaskapp.iml" />
+    </modules>
+  </component>
+</project>

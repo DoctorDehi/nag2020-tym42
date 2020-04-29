@@ -1,0 +1,16 @@
+[Unit]
+Description=App for conrolling the smart house 
+After=network.target
+
+[Service]
+User=root      
+WorkingDirectory=/home/pi/nag/nag-flaskapp 
+ExecStart=/usr/bin/python3 /home/pi/nag/nag-flaskapp/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+

@@ -1,0 +1,19 @@
+{
+    "stairway-light": {
+      "on" : {"reverse-state" : "off" , "button" :  "Turn off"},
+      "off" : {"reverse-state" : "on" , "button" :  "Turn on"}
+    },
+    "garden-light": {
+      "on" : {"reverse-state" : "off" , "button" :  "Turn off"},
+      "off" : {"reverse-state" : "on" , "button" :  "Turn on"}
+    },
+    "barrier": {
+      "opened" : {"reverse-state" : "opened" , "button" :  "Open"},
+      "closed" : {"reverse-state" : "opened" , "button" :  "Open"}
+    },
+    "security-system": {
+      "on" : {"reverse-state" : "off" , "button" :  "Turn off"},
+      "off" : {"reverse-state" : "on" , "button" :  "Turn on"},
+      "break-in" : {"reverse-state" : "off" , "button" :  "Turn off"}
+    }
+}

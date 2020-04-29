@@ -1,0 +1,13 @@
+[Unit]
+Description=Mqtt client for conrolling the smart house 
+After=network.target
+
+[Service]
+User=root      
+WorkingDirectory=/home/pi/nag 
+ExecStart=/usr/bin/python3 /home/pi/nag/mqtt_controller.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <script type=text/javascript src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+</head>
+
+<body>
+    <div class="container">
+      <h1>Smart house</h1>
+      <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Stairway light</h5>
+                    <p>State: <span class="card-text" id="stairway-light-value"></span></p>
+                    <form method="POST">
+                        <input type="hidden"  name="name"  value="stairway-light"/>
+                        <input type="hidden"  name="state" id="stairway-light-form-value" />
+                        <input type="submit" class="btn btn-primary" name="submit" id="stairway-light-button" >
+                    </form>
+                </div>
+            </div>
+        </div>
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Garden light</h5>
+                <p>State: <span class="card-text" id="garden-light-value"></span></p>
+                <form method="POST">
+                    <input type="hidden"  name="name"  value="garden-light"/>
+                    <input type="hidden"  name="state" id="garden-light-form-value" />
+                    <input type="submit" class="btn btn-primary" name="submit" id="garden-light-button">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Barrier</h5>
+                <p>State: <span class="card-text" id="barrier-value"></span></p>
+                <form method="POST">
+                    <input type="hidden"  name="name"  value="barrier"/>
+                    <input type="hidden"  name="state" id="barrier-form-value" />
+                    <input type="submit" class="btn btn-primary" name="submit" id="barrier-button">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Security-system</h5>
+                <p>State: <span class="card-text" id="security-system-value"></span></p>
+                <form method="POST">
+                    <input type="hidden"  name="name"  value="security-system"/>
+                    <input type="hidden"  name="state" id="security-system-form-value" />
+                    <input type="submit" class="btn btn-primary" name="submit" id="security-system-button">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Latest acess</h5>
+                <p><span class="card-text" id="latest access-value"></span></p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <h1>Meteostation</h1>
+        <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Light level</h5>
+                    <p><span class="card-text" id="light-level-value"></span> lx</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Humidity</h5>
+                    <p><span class="card-text" id="humidity-value"></span> %</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Temperature</h5>
+                    <p><span class="card-text" id="temperature-value"></span> °C</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<script type=text/javascript>
+  refresh_data();
+  setInterval(refresh_data, 1000);
+  function refresh_data() {
+      $.getJSON($SCRIPT_ROOT + '/_refresh_data', {
+      }, function(data) {
+          for(key in data.status){
+              $("#"+key+"-value").text(data.status[key])
+            }
+          for(key in data.buttons){
+              document.getElementById(key.concat("-button")).value = data.buttons[key];
+              document.getElementById(key+"-form-value").value = data.status[key];
+
+            }
+      });
+      return false;
+    }
+</script>
+
+</body>
+</html>
